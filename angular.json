@@ -173,11 +173,23 @@
           "configurations": {
             "production": {}
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
     },
     "@angular-material-extensions/advanced-input": {
       "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
       "root": "projects/angular-material-extensions/advanced-input",
       "sourceRoot": "projects/angular-material-extensions/advanced-input/src",
       "prefix": "lib",
