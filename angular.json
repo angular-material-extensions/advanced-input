@@ -175,6 +175,46 @@
           }
         }
       }
+    },
+    "@angular-material-extensions/advanced-input": {
+      "projectType": "library",
+      "root": "projects/angular-material-extensions/advanced-input",
+      "sourceRoot": "projects/angular-material-extensions/advanced-input/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/angular-material-extensions/advanced-input/tsconfig.lib.json",
+            "project": "projects/angular-material-extensions/advanced-input/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/angular-material-extensions/advanced-input/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/angular-material-extensions/advanced-input/src/test.ts",
+            "tsConfig": "projects/angular-material-extensions/advanced-input/tsconfig.spec.json",
+            "karmaConfig": "projects/angular-material-extensions/advanced-input/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/angular-material-extensions/advanced-input/tsconfig.lib.json",
+              "projects/angular-material-extensions/advanced-input/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "advanced-input",
