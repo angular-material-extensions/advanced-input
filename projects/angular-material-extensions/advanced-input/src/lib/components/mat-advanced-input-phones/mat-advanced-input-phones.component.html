@@ -1,14 +1,13 @@
-<div class="phone-fc-container" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="10px">
+<div *ngFor="let phoneNumber of this.value" class="phone-fc-container" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="10px">
     <mat-form-field [@animate]="{ value: '*', params: { y: '100%' } }" appearance="outline"
                     class="no-padding-bottom"
                     fxFlex="auto">
         <mat-label>{{this.label}}</mat-label>
-        <input #tel formControlName="value" matInput type="tel"/>
+        <input #tel  matInput type="tel"/>
         <mat-icon color="primary" matSuffix>phone</mat-icon>
         <!--        <mat-error>{{ 'msa.contactData.phoneNumber.error' | translate }}</mat-error>-->
     </mat-form-field>
     <mat-select [@animate]="{ value: '*', params: { y: '100%' } }" appearance="outline"
-                formControlName="type"
                 fxFlex="20" fxFlexAlign="center">
         <mat-option value="MOBILE">MOBILE</mat-option>
         <mat-option value="PRIVATE">PRIVATE</mat-option>
@@ -22,13 +21,13 @@
             <mat-icon>clear</mat-icon>
         </button>
 
-        <button (click)="removePhoneNumber(i)" *ngIf="i !== 0" color="warn" mat-mini-fab
+        <button (click)="remove(phoneNumber)" *ngIf="i !== 0" color="warn" mat-mini-fab
                 matTooltip="Nummer löschen"
                 type="button">
             <mat-icon>remove</mat-icon>
         </button>
 
-        <button (click)="addPhoneNumber()" color="accent" mat-mini-fab matTooltip="Nummer hinzufügen"
+        <button (click)="add()" color="accent" mat-mini-fab matTooltip="Nummer hinzufügen"
                 type="button">
             <mat-icon>add</mat-icon>
         </button>

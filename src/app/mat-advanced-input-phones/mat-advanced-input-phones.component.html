@@ -1,0 +1,41 @@
+<div *ngFor="let item of this.formArray['controls']; let i = index;"
+     formArrayName="phoneNumbers">
+    <div [formGroupName]="i">
+        <div class="phone-fc-container" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="10px">
+            <mat-form-field [@animate]="{ value: '*', params: { y: '100%' } }" appearance="outline"
+                            class="no-padding-bottom"
+                            fxFlex="auto">
+                <mat-label>Telefonnummer</mat-label>
+                <input #tel formControlName="value" matInput type="tel"/>
+                <mat-icon color="primary" matSuffix>phone</mat-icon>
+                <!--        <mat-error>{{ 'msa.contactData.phoneNumber.error' | translate }}</mat-error>-->
+            </mat-form-field>
+            <mat-select [@animate]="{ value: '*', params: { y: '100%' } }" appearance="outline"
+                        formControlName="type"
+                        fxFlex="20" fxFlexAlign="center">
+                <mat-option value="MOBILE">MOBILE</mat-option>
+                <mat-option value="PRIVATE">PRIVATE</mat-option>
+                <mat-option value="BUSINESS">BUSINESS</mat-option>
+                <mat-option value="OTHERS">OTHERS</mat-option>
+            </mat-select>
+            <div fxLayoutAlign="center center" fxLayoutGap="10px">
+
+                <button  *ngIf="i === 0" [disabled]="tel.value.length === 0" color="warn"
+                        mat-mini-fab matTooltip="Nummer löschen" type="button">
+                    <mat-icon>clear</mat-icon>
+                </button>
+
+                <button (click)="removePhoneNumber(i)" *ngIf="i !== 0" color="warn" mat-mini-fab
+                        matTooltip="Nummer löschen"
+                        type="button">
+                    <mat-icon>remove</mat-icon>
+                </button>
+
+                <button (click)="addPhoneNumber()" color="accent" mat-mini-fab matTooltip="Nummer hinzufügen"
+                        type="button">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

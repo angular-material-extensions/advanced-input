@@ -10,7 +10,7 @@ export interface PhoneNumber {
 }
 
 @Component({
-  selector: 'lib-mat-advanced-input-phones',
+  selector: 'mat-advanced-input-phones',
   templateUrl: './mat-advanced-input-phones.component.html',
   styleUrls: ['./mat-advanced-input-phones.component.scss'],
   providers: [
@@ -29,7 +29,7 @@ export class MatAdvancedInputPhonesComponent implements OnInit, ControlValueAcce
   @Input()
   disabled: boolean | undefined;
 
-  private _value: PhoneNumber[] = [];
+  private _value: PhoneNumber[] = [{ value: '' }];
 
 
   @Input()
@@ -61,7 +61,7 @@ export class MatAdvancedInputPhonesComponent implements OnInit, ControlValueAcce
     });
   }
 
-  add(phoneNumber: PhoneNumber): void {
+  add(phoneNumber: PhoneNumber = { value: '' }): void {
     this.value.push(phoneNumber);
     this.propagateChange(this.value);
   }

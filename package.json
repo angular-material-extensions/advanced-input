@@ -4,14 +4,18 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "serve:hmr": "ng serve --hmr",
     "build": "ng build",
-    "test": "ng test",
+    "build:docs": "npx compodoc -p projects/angular-material-extensions/advanced-input/tsconfig.lib.json --hideGenerator --disableCoverage -d dist/browser/doc/",
+    "build:ssr": "ng build --prod && ng run advanced-input:server:production",
+    "dev:ssr": "ng run advanced-input:serve-ssr",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "dev:ssr": "ng run advanced-input:serve-ssr",
     "serve:ssr": "node dist/advanced-input/server/main.js",
-    "build:ssr": "ng build --prod && ng run advanced-input:server:production",
-    "prerender": "ng run advanced-input:prerender"
+    "test": "ng test",
+    "postinstall": "ngcc",
+    "prerender": "ng run advanced-input:prerender",
+    "prerender:ghpages": "ng run advanced-input:prerender_ghpages"
   },
   "private": true,
   "dependencies": {
@@ -37,6 +41,7 @@
     "@angular-devkit/build-angular": "~0.1100.2",
     "@angular/cli": "~11.0.2",
     "@angular/compiler-cli": "~11.0.1",
+    "@compodoc/compodoc": "^1.1.11",
     "@nguniversal/builders": "^11.0.0",
     "@release-it/conventional-changelog": "^2.0.0",
     "@types/express": "^4.17.0",
